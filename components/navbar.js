@@ -1,30 +1,29 @@
-import { JadwalSesiButton, NavbarMenuSingleWrapper, NavbarMenuWrapper, NavbarWrapper } from "../styled";
 import Image from 'next/image'
 import BicarakanLogo from '../media/bicarakan-logo.webp'
 
 export default function Navbar() {
   return (
-    <NavbarWrapper>
+    <div className="navbar-wrapper">
       <div>
         <Image src={BicarakanLogo} />
       </div>
-      <NavbarMenuWrapper>
-        <NavbarMenuSingleWrapper>
+      <div className="navbar-menu-wrapper">
+        <div className="navbar-menu-single-wrapper">
           Podcast
-        </NavbarMenuSingleWrapper>
-        <NavbarMenuSingleWrapper>
+        </div>
+        <div className="navbar-menu-single-wrapper">
           Tentang Kami
-        </NavbarMenuSingleWrapper>
-        <NavbarMenuSingleWrapper>
+        </div>
+        <div className="navbar-menu-single-wrapper">
           Konselor
-        </NavbarMenuSingleWrapper>
-        <NavbarMenuSingleWrapper>
+        </div>
+        <div className="navbar-menu-single-wrapper">
           Testimoni
-        </NavbarMenuSingleWrapper>
-        <JadwalSesiButton>
+        </div>
+        <button className="jadwalkan-sesi-button">
           Jadwalkan Sesi
-        </JadwalSesiButton>
-      </NavbarMenuWrapper>
-    </NavbarWrapper>
+        </button>
+      </div>
+    </div>
   )
 }
