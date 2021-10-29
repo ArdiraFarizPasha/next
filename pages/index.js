@@ -1,24 +1,30 @@
-import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
 import Layout from '../components/layout'
-import Navbar from '../components/navbar'
-import { HomeBannerWrapper } from '../styled'
-import styles from '../styles/Home.module.css'
-import FirstBanner from '../components/home/firstBanner'
-import BicarakanLogo from '../media/bicarakan-logo.webp'
 import BicarakanLogoSingle from 'media/webp/icon-bicarakan-white-single-cropped.webp'
 import WomanBicarakan from 'media/webp/woman-banner-jumbotron.webp'
 import IconSample from 'media/webp/icon-sample.jpeg'
+import CounselorProfile from 'components/home/counselorProfile'
+
 
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
 export default function Home() {
-  const [sliderRef] = useKeenSlider({
-    slidesPerView: 9,
-    mode: "free",
-    spacing: 20,
-    loop: true,
+  // const [sliderRef] = useKeenSlider({
+  //   slidesPerView: 9,
+  //   mode: "free",
+  //   spacing: 20,
+  //   loop: true,
+  // })
+
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [sliderRef, slider] = useKeenSlider({
+    initial: 0,
+    slidesPerView: 2,
+    slideChanged(s) {
+      setCurrentSlide(s.details().relativeSlide)
+    },
   })
 
   return (
@@ -64,46 +70,9 @@ export default function Home() {
               dalam menangani masalah berikut
             </div>
           </div>
-          <div ref={sliderRef} className="keen-slider">
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-            <div className="keen-slider__slide number-slide1">
-              <Image src={IconSample} className="icon-sample" />
-            </div>
-          </div>
         </div>
       </section>
+      <CounselorProfile />
     </Layout>
   )
 }
